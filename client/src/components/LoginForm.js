@@ -12,7 +12,8 @@ const LoginForm = () => {
   const handleLogin = async () => {
     try {
       const { role } = await login(email, password);
-      navigate(`/${role.toLowerCase()}/home`);
+      navigate(`/${role.toLowerCase()}/home`, { replace: true });
+      window.location.reload();
     } catch (err) {
       setError("Invalid email or password");
     }

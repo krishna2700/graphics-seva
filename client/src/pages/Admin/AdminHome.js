@@ -1,14 +1,7 @@
-// src/pages/Owner/OwnerSettings.js
 import React from "react";
-import Header from "../../components/Header";
 
-const OwnerSettings = () => {
-  return (
-    <div>
-      <Header />
-      <div>Owner Settings Page</div>
-    </div>
-  );
+const AdminHome = () => {
+  return <div>Admin Home Page</div>;
 };
 
-export default OwnerSettings;
+export default AdminHome;

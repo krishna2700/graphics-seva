@@ -9,7 +9,7 @@ export const login = async (email, password) => {
     const { token, role } = response.data;
     localStorage.setItem("token", token);
     localStorage.setItem("userRole", role);
-    return { token, role };
+    return { role };
   } else {
     throw new Error("Login failed");
   }

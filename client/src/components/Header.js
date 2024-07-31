@@ -1,15 +1,17 @@
-import { Button, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
+import { Button, Flex, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../api/auth";
+import { AuthContext } from "../context/AuthContext";
 
 const Header = ({ handleSidebarToggle }) => {
   const navigate = useNavigate();
+  const { logout } = React.useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
       await logout();
-      navigate("/login");
+      navigate("/login", { replace: true });
+      window.location.reload();
     } catch (err) {
       console.error("Logout failed", err);
     }

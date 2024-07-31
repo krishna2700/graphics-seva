@@ -5,16 +5,23 @@ const useAuth = () => {
   const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("userRole");
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      const role = localStorage.getItem("userRole");
 
-    if (token) {
-      setIsAuthenticated(true);
-      setUserRole(role);
-    } else {
-      setIsAuthenticated(false);
-      setUserRole("");
-    }
+      console.log("Token from localStorage:", token);
+      console.log("Role from localStorage:", role);
+
+      if (token && role) {
+        setIsAuthenticated(true);
+        setUserRole(role);
+      } else {
+        setIsAuthenticated(false);
+        setUserRole("");
+      }
+    };
+
+    checkAuth();
   }, []);
 
   return { isAuthenticated, userRole };

@@ -1,15 +1,15 @@
 const sidebarConfig = {
   Owner: [
-    { name: "Home", path: "/owner/home" },
-    { name: "Settings", path: "/owner/settings" },
+    { name: "Dashboard", path: "/owner/home" },
+    { name: "Common Page", path: "/common" },
   ],
   Admin: [
-    { name: "Home", path: "/admin/home" },
-    { name: "Settings", path: "/admin/settings" },
+    { name: "Dashboard", path: "/admin/home" },
+    { name: "Common Page", path: "/common" },
   ],
   User: [
-    { name: "Home", path: "/user/home" },
-    { name: "Settings", path: "/user/settings" },
+    { name: "Dashboard", path: "/user/home" },
+    { name: "Common Page", path: "/common" },
   ],
 };
 
