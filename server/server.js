@@ -12,10 +12,9 @@ connectDB();
 
 const app = express();
 
-// Configure CORS
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "*", // Allow all origins or specify a specific origin
+    origin: process.env.CORS_ORIGIN, // Allow only the specified origin
     credentials: true, // Allow credentials (e.g., cookies) to be sent
   })
 );

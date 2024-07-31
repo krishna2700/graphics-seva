@@ -1,67 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  VStack,
-  Button,
-} from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
+import { Box, List, ListItem, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+import sidebarConfig from "../config/sidebarConfig";
 
 const Sidebar = ({ isOpen, onClose, userRole }) => {
-  const location = useLocation();
+  if (!isOpen) return null;
+
+  const items = sidebarConfig[userRole] || [];
 
   return (
-    <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
-      <DrawerOverlay>
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Menu</DrawerHeader>
-          <DrawerBody>
-            <VStack spacing={4} align="stretch">
-              {userRole === "Owner" && (
-                <Button
-                  as={Link}
-                  to="/owner"
-                  variant={location.pathname === "/owner" ? "solid" : "outline"}
-                >
-                  Owner Tab
-                </Button>
-              )}
-              {userRole === "Admin" && (
-                <Button
-                  as={Link}
-                  to="/admin"
-                  variant={location.pathname === "/admin" ? "solid" : "outline"}
-                >
-                  Admin Tab
-                </Button>
-              )}
-              {userRole === "User" && (
-                <Button
-                  as={Link}
-                  to="/user"
-                  variant={location.pathname === "/user" ? "solid" : "outline"}
-                >
-                  User Tab
-                </Button>
-              )}
-              <Button
-                as={Link}
-                to="/common"
-                variant={location.pathname === "/common" ? "solid" : "outline"}
-              >
-                Common Tab
-              </Button>
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </DrawerOverlay>
-    </Drawer>
+    <Box
+      position="fixed"
+      left="0"
+      top="0"
+      bottom="0"
+      width="250px"
+      bg="gray.700"
+      color="white"
+      p={4}
+      overflowY="auto"
+    >
+      <List spacing={3}>
+        {items.map((item) => (
+          <ListItem key={item.path}>
+            <Link as={RouterLink} to={item.path} onClick={onClose}>
+              {item.name}
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 };
 

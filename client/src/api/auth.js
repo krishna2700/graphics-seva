@@ -4,10 +4,19 @@ const API_URL = "http://localhost:5000/api/auth";
 
 export const login = async (email, password) => {
   const response = await axios.post(`${API_URL}/login`, { email, password });
-  return response.data;
+
+  if (response.status === 200) {
+    const { token, role } = response.data;
+    localStorage.setItem("token", token);
+    localStorage.setItem("userRole", role);
+    return { token, role };
+  } else {
+    throw new Error("Login failed");
+  }
 };
 
 export const logout = async () => {
-  const response = await axios.post(`${API_URL}/logout`);
-  return response.data;
+  await axios.post(`${API_URL}/logout`);
+  localStorage.removeItem("token");
+  localStorage.removeItem("userRole");
 };
