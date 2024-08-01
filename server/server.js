@@ -5,6 +5,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 dotenv.config();
 
@@ -14,8 +15,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN, // Allow only the specified origin
-    credentials: true, // Allow credentials (e.g., cookies) to be sent
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
   })
 );
 
@@ -31,14 +32,15 @@ app.use(
       collectionName: "sessions",
     }),
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-      sameSite: "none", // Required for cookies to be sent in cross-origin requests
-      secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+      maxAge: 1000 * 60 * 60 * 24,
+      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
     },
   })
 );
 
 app.use("/api/auth", authRoutes);
+app.use("/api/admins", adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 

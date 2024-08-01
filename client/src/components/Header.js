@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, IconButton, Button } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -27,7 +28,13 @@ const Header = ({ handleSidebarToggle }) => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Button onClick={handleSidebarToggle}>Toggle Sidebar</Button>
+      <IconButton
+        icon={<HamburgerIcon />}
+        onClick={handleSidebarToggle}
+        variant="ghost"
+        color="white"
+        aria-label="Open sidebar"
+      />
       <Heading size="md">My Application</Heading>
       <Button onClick={handleLogout}>Logout</Button>
     </Flex>
