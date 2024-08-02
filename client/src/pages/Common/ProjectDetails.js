@@ -93,7 +93,7 @@ const ProjectDetails = () => {
                   {project.images.map((image, index) => (
                     <Box key={index} position="relative" cursor="pointer">
                       <Image
-                        src={image}
+                        src={`http://localhost:5000/${image}`}
                         alt={`Project Image ${index}`}
                         objectFit="cover"
                         borderRadius="md"

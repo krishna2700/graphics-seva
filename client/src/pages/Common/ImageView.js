@@ -1,19 +1,22 @@
 import React from "react";
-import { Box, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import ImageZoom from "react-image-zoom";
 
 const ImageView = () => {
   const { imageUrl } = useParams();
+  const imageSrc = `http://localhost:5000/${imageUrl}`;
+  const zoomProps = {
+    img: imageSrc,
+    zoomWidth: 500,
+    imgAlt: "Project Image",
+    zoomPosition: "original",
+    offset: { vertical: 10, horizontal: 10 },
+  };
 
   return (
     <Box p={4}>
-      <Image
-        src={imageUrl}
-        alt="Project Image"
-        objectFit="contain"
-        width="100%"
-        height="auto"
-      />
+      <ImageZoom {...zoomProps} />
     </Box>
   );
 };
