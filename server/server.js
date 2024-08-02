@@ -6,6 +6,8 @@ const MongoStore = require("connect-mongo");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 dotenv.config();
 
@@ -41,6 +43,8 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admins", adminRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 

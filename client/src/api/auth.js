@@ -33,3 +33,38 @@ export const getAdmins = async () => {
   const response = await axios.get(`${API_URL}/admins`);
   return response.data;
 };
+
+export const createProject = async (projectData) => {
+  const response = await axios.post(`${API_URL}/projects`, projectData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
+};
+
+export const getUsers = async () => {
+  const response = await axios.get(`${API_URL}/users`);
+  return response.data;
+};
+
+export const getProjects = async () => {
+  const response = await axios.get(`${API_URL}/projects`);
+  return response.data;
+};
+
+export const getProjectById = async (id) => {
+  const response = await axios.get(`${API_URL}/projects/${id}`);
+  return response.data;
+};
+export const updateProjectImages = (projectId, formData) => {
+  return axios.put(
+    `http://localhost:5000/api/projects/${projectId}/images`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+};

@@ -19,6 +19,8 @@ import AdminsDetails from "./pages/Owner/AdminsDetails";
 import UsersDetails from "./pages/Owner/UsersDetails";
 import DownloadRequests from "./pages/Owner/DownloadRequests";
 import { AuthContext } from "./context/AuthContext";
+import ProjectDetails from "./pages/Common/ProjectDetails";
+import ImageView from "./pages/Common/ImageView";
 
 const App = () => {
   const { isAuthenticated, userRole } = React.useContext(AuthContext);
@@ -72,6 +74,8 @@ const App = () => {
                       path="/common/create-projects"
                       element={<CreateProjects />}
                     />
+                    <Route path="/projects/:id" element={<ProjectDetails />} />
+                    <Route path="/images/:imageUrl" element={<ImageView />} />
                     <Route
                       path="/owner/admins-details"
                       element={
