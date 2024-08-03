@@ -77,6 +77,10 @@ const App = () => {
                     <Route path="/projects/:id" element={<ProjectDetails />} />
                     <Route path="/images/:imageUrl" element={<ImageView />} />
                     <Route
+                      path="/admin/download-requests"
+                      element={DownloadRequests}
+                    />
+                    <Route
                       path="/owner/admins-details"
                       element={
                         userRole === "Owner" ? (

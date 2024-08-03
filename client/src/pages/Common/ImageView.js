@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ImageZoom from "react-image-zoom";
+import RequestDownloadButton from "./RequestDownloadButton";
 
 const ImageView = () => {
   const { imageUrl } = useParams();
@@ -17,6 +18,7 @@ const ImageView = () => {
   return (
     <Box p={4}>
       <ImageZoom {...zoomProps} />
+      <RequestDownloadButton imageUrl={imageUrl} />
     </Box>
   );
 };

@@ -57,14 +57,61 @@ export const getProjectById = async (id) => {
   const response = await axios.get(`${API_URL}/projects/${id}`);
   return response.data;
 };
+
 export const updateProjectImages = (projectId, formData) => {
-  return axios.put(
-    `http://localhost:5000/api/projects/${projectId}/images`,
-    formData,
+  return axios.put(`${API_URL}/projects/${projectId}/images`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+// New API functions
+export const requestDownload = async (imageUrl) => {
+  const token = localStorage.getItem("token");
+  const response = await axios.post(
+    `${API_URL}/download/request-download`,
+    { imageUrl },
     {
       headers: {
-        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
       },
     }
   );
+  return response.data;
+};
+
+export const getDownloadRequestByImageUrl = async (imageUrl) => {
+  const token = localStorage.getItem("token");
+  const response = await axios.get(`${API_URL}/download/requests`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    params: { imageUrl }, // Ensure imageUrl is included in the params
+  });
+  return response.data; // Adjust this if the response structure is different
+};
+
+export const getDownloadRequests = async () => {
+  const token = localStorage.getItem("token");
+  const response = await axios.get(`${API_URL}/download/requests`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
+
+export const updateDownloadRequest = async (id, status) => {
+  const token = localStorage.getItem("token");
+  const response = await axios.patch(
+    `${API_URL}/download/requests/${id}`,
+    { status },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response.data;
 };

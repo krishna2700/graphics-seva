@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const userRoutes = require("./routes/userRoutes");
+const downloadRoutes = require("./routes/downloadRoutes");
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
     credentials: true,
   })
 );
@@ -46,6 +47,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admins", adminRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/download", downloadRoutes);
 
 const PORT = process.env.PORT || 5000;
 
