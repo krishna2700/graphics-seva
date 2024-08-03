@@ -115,3 +115,19 @@ export const updateDownloadRequest = async (id, status) => {
   );
   return response.data;
 };
+
+// api/auth.js
+export const getAdminDetails = async (adminId) => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await axios.get(`${API_URL}/admins/${adminId}/details`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching admin details:", error);
+    throw error; // Handle the error as needed
+  }
+};

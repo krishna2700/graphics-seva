@@ -20,6 +20,8 @@ const userSchema = new mongoose.Schema({
     enum: ["User", "Admin", "Owner"],
     default: "User",
   },
+  projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Project" }],
+  albums: [{ type: mongoose.Schema.Types.ObjectId, ref: "Album" }],
 });
 
 userSchema.pre("save", async function (next) {

@@ -21,7 +21,7 @@ const upload = multer({ storage });
 router.post("/", upload.array("images"), async (req, res) => {
   try {
     const { name, description, assignedTo } = req.body;
-    const images = req.files.map((file) => file.path.replace(/\\/g, "/")); // Ensure paths are correctly formatted
+    const images = req.files.map((file) => file.path.replace(/\\/g, "/"));
 
     const user = await User.findById(assignedTo);
     if (!user) {
@@ -73,7 +73,7 @@ router.put("/:id/images", upload.array("images"), async (req, res) => {
       return res.status(404).json({ message: "Project not found" });
     }
 
-    const images = req.files.map((file) => file.path.replace(/\\/g, "/")); // Ensure paths are correctly formatted
+    const images = req.files.map((file) => file.path.replace(/\\/g, "/"));
 
     project.images.push(...images);
     await project.save();

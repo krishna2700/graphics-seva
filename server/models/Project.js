@@ -1,13 +1,18 @@
 const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  images: { type: [String], required: true },
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  images: [String],
   assignedTo: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    ref: "User", // Ensure this matches your User model name
   },
 });
 
