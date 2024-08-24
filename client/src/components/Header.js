@@ -20,13 +20,13 @@ const Header = ({ handleSidebarToggle }) => {
 
   return (
     <Flex
-      as="header"
-      width="100%"
-      padding="4"
-      backgroundColor="gray.800"
-      color="white"
-      justifyContent="space-between"
-      alignItems="center"
+      height={"100vh"}
+      alignItems={"center"}
+      justifyContent="center"
+      backgroundImage={`url(https://www.avdvvn.org/assets/images/t1.jpeg)`}
+      backgroundSize="cover"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
     >
       <IconButton
         icon={<HamburgerIcon />}

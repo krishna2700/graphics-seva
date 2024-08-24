@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
+import profileImg from "../assets/profile.jpg";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -29,15 +30,33 @@ const LoginForm = () => {
   };
 
   return (
-    <Grid templateColumns="repeat(2, 1fr)" height="100vh">
+    <Grid height="100vh">
       <GridItem display="flex" alignItems="center" justifyContent="center">
-        <Box width="80%">
-          <VStack spacing={4} align="stretch">
-            <Text fontSize="2xl" fontWeight="bold" mb={4}>
-              Login
-            </Text>
+        <Box
+          width="80%"
+          maxWidth="400px" // Optional: Set a maximum width for the form
+          bg="whiteAlpha.900" // Optional: Background color or transparency for the box
+          p={8} // Padding inside the box
+          borderRadius="md"
+          
+        >
+          <VStack
+            spacing={4}
+            align="stretch"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Image
+              src={profileImg}
+              alt="Login Image"
+              borderRadius="full"
+              boxSize="100px" // Ensures the image is always a 100px by 100px circle
+              objectFit="cover" // Ensures the image maintains its aspect ratio within the circle
+              mb={4}
+            />
+
             <Input
-              placeholder="Email"
+              placeholder="Username or Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -53,15 +72,6 @@ const LoginForm = () => {
             </Button>
           </VStack>
         </Box>
-      </GridItem>
-      <GridItem>
-        <Image
-          src="https://via.placeholder.com/600x800"
-          alt="Login Image"
-          objectFit="cover"
-          height="100%"
-          width="100%"
-        />
       </GridItem>
     </Grid>
   );
