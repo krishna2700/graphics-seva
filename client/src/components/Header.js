@@ -3,6 +3,7 @@ import { Flex, Heading, IconButton, Button } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import backGroundImg from "../assets//background.jpg";
 
 const Header = ({ handleSidebarToggle }) => {
   const navigate = useNavigate();
@@ -20,13 +21,17 @@ const Header = ({ handleSidebarToggle }) => {
 
   return (
     <Flex
-      height={"100vh"}
-      alignItems={"center"}
-      justifyContent="center"
-      backgroundImage={`url(https://www.avdvvn.org/assets/images/t1.jpeg)`}
-      backgroundSize="cover"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        backgroundImage: `url(${backGroundImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <IconButton
         icon={<HamburgerIcon />}
@@ -34,9 +39,15 @@ const Header = ({ handleSidebarToggle }) => {
         variant="ghost"
         color="white"
         aria-label="Open sidebar"
+        zIndex={2} // Ensure this is above the background
       />
-      <Heading size="md">My Application</Heading>
-      <Button onClick={handleLogout}>Logout</Button>
+
+      <Heading size="md" zIndex={2}>
+        My Application
+      </Heading>
+      <Button onClick={handleLogout} zIndex={2}>
+        Logout
+      </Button>
     </Flex>
   );
 };
