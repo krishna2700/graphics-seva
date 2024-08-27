@@ -12,6 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
 import profileImg from "../assets/profile.jpg";
+import backgroundImg from "../assets/background.jpg";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -30,15 +31,22 @@ const LoginForm = () => {
   };
 
   return (
-    <Grid height="100vh">
+    <Grid
+      height="100vh"
+      backgroundImage={`url(${backgroundImg})`}
+      backgroundSize="cover"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      opacity={0.8}
+    >
       <GridItem display="flex" alignItems="center" justifyContent="center">
         <Box
           width="80%"
-          maxWidth="400px" // Optional: Set a maximum width for the form
-          bg="whiteAlpha.900" // Optional: Background color or transparency for the box
-          p={8} // Padding inside the box
+          maxWidth="400px"
+          bg="whiteAlpha.900"
+          p={8}
           borderRadius="md"
-          
+          boxShadow="lg"
         >
           <VStack
             spacing={4}
@@ -50,8 +58,8 @@ const LoginForm = () => {
               src={profileImg}
               alt="Login Image"
               borderRadius="full"
-              boxSize="100px" // Ensures the image is always a 100px by 100px circle
-              objectFit="cover" // Ensures the image maintains its aspect ratio within the circle
+              boxSize="100px"
+              objectFit="cover"
               mb={4}
             />
 
@@ -59,12 +67,30 @@ const LoginForm = () => {
               placeholder="Username or Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              bg="gray.700"
+              color="white"
+              _placeholder={{ color: "gray.400" }}
+              border="2px"
+              borderColor="blue.500"
+              _focus={{
+                borderColor: "blue.700",
+                boxShadow: "0 0 0 1px blue.700",
+              }}
             />
             <Input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              bg="gray.700"
+              color="white"
+              _placeholder={{ color: "gray.400" }}
+              border="2px"
+              borderColor="blue.500"
+              _focus={{
+                borderColor: "blue.700",
+                boxShadow: "0 0 0 1px blue.700",
+              }}
             />
             {error && <Text color="red.500">{error}</Text>}
             <Button colorScheme="blue" onClick={handleLogin}>
