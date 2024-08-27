@@ -43,7 +43,7 @@ const LoginForm = () => {
         <Box
           width="80%"
           maxWidth="400px"
-          bg="whiteAlpha.900"
+          bg="rgba(255, 255, 255, 0.2)"
           p={8}
           borderRadius="md"
           boxShadow="lg"
