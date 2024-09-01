@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { getDownloadRequests, updateDownloadRequest } from "../../api/auth";
+import { getDownloadRequests, updateDownloadRequest } from "../../api/api";
 
 const DownloadRequests = () => {
   const [requests, setRequests] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
-import { requestDownload, getDownloadRequestByImageUrl } from "../../api/auth";
+import { requestDownload, getDownloadRequestByImageUrl } from "../../api/api";
 
 const RequestDownloadButton = ({ imageUrl }) => {
   const [requestStatus, setRequestStatus] = useState(null);

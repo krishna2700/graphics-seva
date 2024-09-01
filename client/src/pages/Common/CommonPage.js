@@ -17,7 +17,7 @@ import {
   VStack,
   Text,
 } from "@chakra-ui/react";
-import { getUsers, createProject } from "../../api/auth";
+import { getUsers, createProject } from "../../api/api";
 
 const CreateProjects = () => {
   const [users, setUsers] = useState([]);

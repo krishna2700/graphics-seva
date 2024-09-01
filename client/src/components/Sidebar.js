@@ -1,42 +1,73 @@
 import React from "react";
-import { Box, List, ListItem, Link, IconButton } from "@chakra-ui/react";
-import { CloseIcon } from "@chakra-ui/icons";
-import { Link as RouterLink } from "react-router-dom";
-import sidebarConfig from "../config/sidebarConfig";
+import {
+  Box,
+  VStack,
+  Link,
+  useDisclosure,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  Button,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({ onClose, userRole }) => {
-  const items = sidebarConfig[userRole] || [];
+const Sidebar = ({ role }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
+  const sidebarItems = {
+    owner: [
+      { name: "Projects", path: "/projects" },
+      { name: "Albums", path: "/albums" },
+      { name: "Requests", path: "/requests" },
+      { name: "Create Admin", path: "/create-admin" },
+      { name: "Create User", path: "/create-user" },
+      { name: "Private Albums", path: "/private-albums" },
+    ],
+    admin: [
+      { name: "Projects", path: "/projects" },
+      { name: "Albums", path: "/albums" },
+      { name: "Create Users", path: "/create-user" },
+      { name: "Requests", path: "/requests" },
+    ],
+    user: [{ name: "Create Albums", path: "/create-album" }],
+  };
 
   return (
-    <Box
-      position="fixed"
-      left="0"
-      top="0"
-      bottom="0"
-      width="250px"
-      bg="gray.700"
-      color="white"
-      p={4}
-      overflowY="auto"
-    >
-      <IconButton
-        icon={<CloseIcon />}
-        onClick={onClose}
-        variant="ghost"
-        color="white"
-        aria-label="Close sidebar"
-        mb={4}
-      />
-      <List spacing={3}>
-        {items.map((item) => (
-          <ListItem key={item.path}>
-            <Link as={RouterLink} to={item.path}>
-              {item.name}
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+    <>
+      <Button
+        onClick={onOpen}
+        leftIcon={<HamburgerIcon />}
+        variant="outline"
+        m={4}
+      >
+        Menu
+      </Button>
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader>Menu</DrawerHeader>
+          <DrawerBody>
+            <VStack spacing={4}>
+              {sidebarItems[role].map((item) => (
+                <Link
+                  key={item.name}
+                  onClick={() => {
+                    navigate(item.path);
+                    onClose();
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 };
 

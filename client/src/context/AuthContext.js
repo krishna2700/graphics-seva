@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { login as apiLogin, logout as apiLogout } from "../api/auth";
+import { login as apiLogin, logout as apiLogout } from "../api/api";
 
 export const AuthContext = createContext();
 

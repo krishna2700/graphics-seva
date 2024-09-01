@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../api/auth";
+import { login } from "../api/api";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

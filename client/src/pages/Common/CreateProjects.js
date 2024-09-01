@@ -18,7 +18,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { getUsers, createProject, getProjects } from "../../api/auth";
+import { getUsers, createProject, getProjects } from "../../api/api";
 
 const CreateProjects = () => {
   const [users, setUsers] = useState([]);

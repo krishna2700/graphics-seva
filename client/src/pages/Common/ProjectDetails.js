@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProjectById, updateProjectImages } from "../../api/auth";
+import { getProjectById, updateProjectImages } from "../../api/api";
 
 const ProjectDetails = () => {
   const { id } = useParams();

@@ -1,14 +1,14 @@
+// src/index.js
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
-import { AuthProvider } from "./context/AuthContext"; // Make sure this import is correct
 
-ReactDOM.render(
-  <ChakraProvider>
-    <AuthProvider>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <ChakraProvider>
       <App />
-    </AuthProvider>
-  </ChakraProvider>,
-  document.getElementById("root")
+    </ChakraProvider>
+  </React.StrictMode>
 );

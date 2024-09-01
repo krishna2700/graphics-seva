@@ -15,7 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { createAdmin, getAdminDetails, getAdmins } from "../../api/auth";
+import { createAdmin, getAdminDetails, getAdmins } from "../../api/api";
 
 const AdminsDetails = () => {
   const [admins, setAdmins] = useState([]);
