@@ -1,29 +1,29 @@
-import { createContext, useState } from "react";
-import { loginApi } from "../services/api";
-import { useHistory } from "react-router-dom";
+import { createContext, useState } from 'react';
+import { loginApi } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate(); 
 
   const login = async (email, password) => {
     try {
       const res = await loginApi(email, password);
       setUser(res.data.user);
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem('token', res.data.token);
 
       // Redirect based on role
-      if (res.data.user.role === "Owner") {
-        history.push("/owner-dashboard");
-      } else if (res.data.user.role === "Admin") {
-        history.push("/admin-dashboard");
-      } else if (res.data.user.role === "User") {
-        history.push("/user-dashboard");
+      if (res.data.user.role === 'Owner') {
+        navigate('/owner-dashboard');
+      } else if (res.data.user.role === 'Admin') {
+        navigate('/admin-dashboard'); 
+      } else if (res.data.user.role === 'User') {
+        navigate('/user-dashboard'); 
       }
     } catch (error) {
-      console.error("Login failed", error);
+      console.error('Login failed', error);
     }
   };
 

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./components/Login";
 import OwnerDashboard from "./components/OwnerDashboard";
@@ -9,12 +9,12 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/owner-dashboard" component={OwnerDashboard} />
-          <Route path="/admin-dashboard" component={AdminDashboard} />
-          <Route path="/user-dashboard" component={UserDashboard} />
-        </Switch>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/owner-dashboard" element={<OwnerDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+        </Routes>
       </Router>
     </AuthProvider>
   );

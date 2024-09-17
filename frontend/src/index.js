@@ -1,11 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+// Customize the theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2', // Primary color for buttons and inputs
+    },
+    secondary: {
+      main: '#dc004e', // Secondary color if needed
+    },
+  },
+});
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
     <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </ThemeProvider>,
+  document.getElementById('root')
 );
